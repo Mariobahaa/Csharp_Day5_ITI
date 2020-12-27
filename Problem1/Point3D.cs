@@ -67,5 +67,10 @@ namespace Problem1
         {
             return !((P.x == Pnt.x) && (P.y == Pnt.y) && (P.z == Pnt.z));
         }
+
+        public static explicit operator String(Point3D p)
+        {
+            return p.ToString();
+        }
     }
 }
