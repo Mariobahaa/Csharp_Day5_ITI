@@ -27,12 +27,6 @@ namespace Problem4
             get { return seconds; }
             set { seconds = value; }
         }
-        public Duration(int _h, int _m, int _s)
-        {
-            hours = _h;
-            minutes = _m;
-            seconds = _s;
-        }
 
         public Duration(int time)
         {
@@ -44,6 +38,13 @@ namespace Problem4
             seconds = t;
         }
 
+        public Duration(int _h, int _m, int _s):
+        this(((_h* (60 * 60)) + (_m* 60) + _s) > 0?(_h * (60 * 60) + (_m * 60) + _s):0)
+        {
+           ;
+        }
+
+     
         public override bool Equals(object obj)
         {
             Duration dur = (Duration)obj;
@@ -117,12 +118,19 @@ namespace Problem4
 
         public static Duration operator -(Duration d)
         {
-            return new Duration(d.hours * -1, d.minutes * -1, d.seconds * -1);
+            return new Duration(d.hours, d.minutes - 1, d.seconds);
+
+            //return new Duration(d.hours * -1, d.minutes * -1, d.seconds * -1);
         }
 
-        public static implicit operator bool(Duration d)
+        public static bool operator true(Duration d)
         {
             return !((d.hours == 0) && (d.minutes == 0) && (d.seconds == 0));
+        }
+
+        public static bool operator false(Duration d)
+        {
+            return ((d.hours == 0) && (d.minutes == 0) && (d.seconds == 0));
         }
 
         public static bool operator >=(Duration d1, Duration d2)

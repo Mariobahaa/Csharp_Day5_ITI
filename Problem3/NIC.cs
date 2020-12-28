@@ -23,5 +23,26 @@ namespace Problem3
             Type = t;
         }
 
+        String pManufacuture
+        {
+
+            get { return Manufacture; }
+            set { Manufacture = value; }
+        }
+
+        int pMACaddress
+        {
+
+            get { return MACaddress; }
+            set { MACaddress = value; }
+        }
+        String pType
+        {
+
+            get { return Type; }
+            set { Type = value; }
+        }
+
+
     }
 }
